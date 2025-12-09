@@ -1,0 +1,94 @@
+.dock-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+}
+
+.dock {
+    display: flex;
+    gap: 12px;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    /* Darker tint */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.dock-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    /* Smaller size */
+    height: 45px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 20px;
+    /* Smaller icon */
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.dock-item:hover {
+    transform: translateY(-10px) scale(1.1);
+    /* Slightly less scale */
+    background: rgba(138, 43, 226, 0.2);
+    /* Purple glassy effect */
+    border-color: rgba(138, 43, 226, 0.5);
+    box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+    color: #fff;
+}
+
+.dock-tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.dock-item:hover .dock-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+    top: -45px;
+}
+
+@media only screen and (max-width: 600px) {
+    .dock-container {
+        bottom: 20px;
+    }
+
+    .dock {
+        padding: 8px 15px;
+        gap: 10px;
+        background: rgba(0, 0, 0, 0.5);
+        /* Even darker on mobile for visibility */
+    }
+
+    .dock-item {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}

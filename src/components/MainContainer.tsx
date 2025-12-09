@@ -3,7 +3,9 @@ import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
 import Cursor from "./Cursor";
+import Dock from "./Dock";
 import Landing from "./Landing";
+import MusicPlayer from "./MusicPlayer";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import WhatIDo from "./WhatIDo";
@@ -46,6 +48,8 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         </Suspense>
         <Contact />
       </div>
+      <Dock />
+      <MusicPlayer />
     </div>
   );
 };

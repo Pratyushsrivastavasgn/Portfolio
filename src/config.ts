@@ -1,107 +1,168 @@
 export const config = {
     developer: {
-        name: "Huzaif",
-        fullName: "Huzaif Ahmed",
+        name: "Pratyush",
+        fullName: "Pratyush ",
         title: "Full Stack Developer",
-        description: "Full-stack builder creating digital experiences that respect humans and scale with clarity. Accessibility is my north star."
+        description:
+            "Second-year CSE student passionate about Java, JavaScript, Flutter, and full-stack development, with a growing interest in AI/ML and cloud technologies. I focus on learning by building—creating dynamic applications, automation tools, and intelligent systems while continuously improving through real-world projects and challenges."
     },
+
     social: {
-        github: "huzaifahmedz",
-        email: "dev.huzaif@gmail.com",
+        github: "Pratyushsrivastavasgn",
+        email: "pratyushsrivastava1sgn@gmail.com",
         location: "India"
     },
+
     about: {
         title: "About Me",
-        description: "Full-stack builder creating digital experiences that respect humans and scale with clarity. Accessibility is my north star. I specialize in building modern web applications with React, Node.js, and cutting-edge technologies."
+        description: [
+            "I am a second-year Computer Science Engineering student with a strong interest in software development, AI/ML, and cloud technologies. Currently building a deep foundation in programming (Java, JavaScript), data structures, algorithms, and full-stack engineering.",
+            "I learn best by doing—working on personal and academic projects involving dynamic websites, mobile apps, intelligent systems, and automation workflows. I actively explore cloud platforms like AWS and modern development tools to streamline and enhance my engineering process.",
+            "Driven by curiosity and a builder’s mindset, I’m committed to continuous improvement, collaboration, and solving real-world problems through technology."
+        ]
     },
+
     experiences: [
         {
-            position: "Frontend Developer",
-            company: "SelectSkillSet",
+            position: "B.Tech CSE",
+            company: "SRMIST",
             period: "2024 - Present",
-            location: "Remote",
-            description: "Developing modern, responsive frontend applications with focus on user experience and performance. Working with cutting-edge technologies to build scalable web solutions.",
+            location: "Chennai",
+            description:
+                "Pursuing Bachelor of Technology in Computer Science and Engineering with a focus on strong technical foundations and hands-on learning.",
             responsibilities: [
-                "Building responsive and interactive user interfaces using React and Next.js",
-                "Implementing modern UI/UX designs with TailwindCSS and Framer Motion",
-                "Optimizing application performance and ensuring cross-browser compatibility",
-                "Collaborating with design and backend teams to deliver high-quality features"
+                "Developing core understanding of Data Structures & Algorithms, Operating Systems, DBMS, Computer Networks, and Software Engineering.",
+                "Building academic and personal projects to apply theoretical knowledge in practical scenarios.",
+                "Actively exploring cloud services, AI/ML fundamentals, and modern development workflows."
             ],
-            technologies: ["React", "Next.js", "TailwindCSS", "JavaScript", "Framer Motion", "TypeScript"]
+            technologies: [
+                "DSA",
+                "Operating Systems",
+                "DBMS",
+                "Computer Networks",
+                "OOP",
+                "Software Engineering"
+            ]
         },
+
         {
             position: "Full Stack Developer",
-            company: "Tekisky",
+            company: "ThousandX.in",
             period: "2023 - 2024",
             location: "Remote",
-            description: "Developed and maintained full-stack web applications, working on both frontend and backend systems. Collaborated with cross-functional teams to deliver robust software solutions.",
+            description:
+                "Developed and maintained full-stack web applications, contributing to frontend interfaces, backend APIs, and overall system optimization.",
             responsibilities: [
-                "Developed and maintained full-stack web applications using React, Node.js, and MongoDB",
-                "Implemented RESTful APIs and integrated third-party services",
-                "Built responsive user interfaces and optimized application performance",
-                "Worked on database design and backend architecture"
+                "Designed and modernized UI/UX using TailwindCSS for an improved user experience.",
+                "Integrated a secure and efficient payment gateway for seamless transactions.",
+                "Built responsive, scalable user interfaces and optimized web performance.",
+                "Collaborated on backend architecture and database design for reliability and scalability."
             ],
             technologies: ["React", "Node.js", "MongoDB", "Express", "JavaScript", "MERN Stack"]
         }
     ],
+
     projects: [
         {
             id: 1,
-            title: "AI-Powered Code Review Assistant",
-            category: "Full Stack",
-            technologies: "Python, TensorFlow, React, FastAPI, PostgreSQL, Docker",
-            image: "/images/project-1.webp"
+            title: "WorkOBalance",
+            category: "AI/ML",
+            description: "An AI-powered application designed to help users maintain a healthy work-life balance through intelligent monitoring and suggestions.",
+            technologies:
+                "Python, TensorFlow, Tkinter, MongoDB, MediaPipe, OpenCV",
+            image: "/images/project-1.webp",
+            github: {
+                show: true,
+                url: "https://github.com/Pratyushsrivastavasgn"
+            },
+            live: {
+                show: false,
+                url: "#"
+            }
         },
         {
             id: 2,
-            title: "Real-time Collaborative Whiteboard",
+            title: "SRMvLABS",
             category: "Full Stack",
-            technologies: "TypeScript, WebRTC, Socket.io, Canvas API, Node.js, Redis",
-            image: "/images/project-2.webp"
+            description: "A comprehensive virtual laboratory platform enabling students to perform experiments and simulations online with real-time feedback.",
+            technologies:
+                "TypeScript, Reactflow, ReactForms, Canvas API, TailwindCSS",
+            image: "/images/project-2.webp",
+            github: {
+                show: true,
+                url: "https://github.com/Pratyushsrivastavasgn"
+            },
+            live: {
+                show: true,
+                url: "#"
+            }
         },
         {
             id: 3,
-            title: "Blockchain Voting System",
-            category: "Full Stack",
-            technologies: "Solidity, Web3.js, React, Ethereum, IPFS, MetaMask",
-            image: "/images/project-3.webp"
-        },
-        {
-            id: 4,
-            title: "Cloud Infrastructure Dashboard",
-            category: "Full Stack",
-            technologies: "Go, Kubernetes, Grafana, Prometheus, Terraform, React",
-            image: "/images/project-4.webp"
-        },
-        {
-            id: 5,
-            title: "Neural Network Visualizer",
-            category: "Full Stack",
-            technologies: "Python, TensorFlow.js, D3.js, Next.js, WebGL, TypeScript",
-            image: "/images/project-5.webp"
+            title: "MachenQuiz",
+            category: "Frontend",
+            description: "An interactive quiz application featuring a modern UI, real-time scoring, and dynamic question generation for an engaging user experience.",
+            technologies: "React, TypeScript, TailwindCSS",
+            image: "/images/project-3.webp",
+            github: {
+                show: true,
+                url: "https://github.com/Pratyushsrivastavasgn"
+            },
+            live: {
+                show: true,
+                url: "#"
+            }
         }
     ],
+
     contact: {
-        email: "dev.huzaif@gmail.com",
-        github: "https://github.com/huzaifahmedz",
-        linkedin: "https://www.linkedin.com",
-        twitter: "https://x.com",
-        instagram: "https://www.instagram.com"
+        email: "pratyushsrivastava1sgn@gmail.com",
+        github: "https://github.com/Pratyushsrivastavasgn",
+        linkedin: "https://www.linkedin.com/in/pratyush-srivastava-2b0480316/",
+        twitter: "https://x.com/Pratyush_Code",
+        instagram: "https://www.instagram.com/pratyushsgn/"
     },
+
     skills: {
         develop: {
-            title: "DEVELOP",
-            description: "Full-stack development with modern web technologies",
-            details: "Building scalable web applications using React, Node.js, and cutting-edge frameworks. Specializing in creating responsive, performant, and accessible user interfaces.",
-            tools: ["JavaScript", "TypeScript", "React", "Next.js", "Node.js", "Express.js", "MongoDB", "TailwindCSS", "Framer Motion", "Three.js"]
+            title: "BUILD",
+            description:
+                "Delivering robust solutions across web, mobile, cloud, and AI systems",
+            details:
+                "Engineering scalable and maintainable applications by combining strong software fundamentals with expertise in full-stack development, mobile app creation, cloud integration, and early-stage AI/ML experimentation. Focused on efficient coding practices, DSA-driven problem-solving, and creating technology that performs reliably in real-world environments.",
+            tools: [
+                "Java",
+                "JavaScript",
+                "TypeScript",
+                "Flutter",
+                "React",
+                "Node.js",
+                "Python",
+                "AWS",
+                "Machine Learning",
+                "Data Structures & Algorithms",
+                "SQL",
+                "MongoDB"
+            ]
         },
+
         design: {
-            title: "DESIGN",
-            description: "UI/UX design and modern web interfaces",
-            details: "Creating beautiful and intuitive user experiences with focus on accessibility and user-centered design principles.",
-            tools: ["UI Design", "UX Design", "Figma", "Photoshop", "Motion Design", "Responsive Design", "Accessibility", "Prototyping"]
+            title: "LEAD",
+            description:
+                "Ensuring clarity, coordination, and successful product delivery",
+            details:
+                "Driving execution through structured planning, cross-functional collaboration, and disciplined delivery practices. Skilled in managing agile workflows, aligning stakeholders, and leveraging cloud, CI/CD, and analytical methodologies to ship reliable, user-focused products on schedule.",
+            tools: [
+                "Agile",
+                "Scrum",
+                "AWS",
+                "JIRA",
+                "Roadmapping",
+                "CI/CD",
+                "Stakeholder Management",
+                "Product Planning",
+                "Risk Management"
+            ]
         }
     }
 };
-
-

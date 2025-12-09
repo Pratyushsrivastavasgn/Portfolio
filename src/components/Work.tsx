@@ -66,8 +66,31 @@ const Work = () => {
                     <p>{project.category}</p>
                   </div>
                 </div>
+                <p className="work-description">{project.description}</p>
                 <h4>Tools and features</h4>
                 <p>{project.technologies}</p>
+                <div className="work-links">
+                  {project.github.show && (
+                    <a
+                      href={project.github.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="work-link-btn"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                  {project.live.show && (
+                    <a
+                      href={project.live.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="work-link-btn"
+                    >
+                      Live Demo
+                    </a>
+                  )}
+                </div>
               </div>
               <WorkImage image={project.image} alt={project.title} />
             </div>
