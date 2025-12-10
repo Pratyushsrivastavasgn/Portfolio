@@ -16,17 +16,19 @@ export const config = {
     about: {
         title: "About Me",
         description: [
-            "I am a second-year Computer Science Engineering student with a strong interest in software development, AI/ML, and cloud technologies. Currently building a deep foundation in programming (Java, JavaScript), data structures, algorithms, and full-stack engineering.",
-            "I learn best by doing—working on personal and academic projects involving dynamic websites, mobile apps, intelligent systems, and automation workflows. I actively explore cloud platforms like AWS and modern development tools to streamline and enhance my engineering process.",
-            "Driven by curiosity and a builder’s mindset, I’m committed to continuous improvement, collaboration, and solving real-world problems through technology."
-        ]
+  "I’m a second-year CSE student passionate about software development, AI/ML, and cloud technologies.",
+  "I’m building a strong foundation in Java, JavaScript, DSA, and full-stack engineering through hands-on projects.",
+  "I learn by creating whether it’s web apps, mobile apps, or intelligent automation tools.",
+  "Curious and growth-driven, I focus on solving real-world problems through technology."
+]
+
     },
 
     experiences: [
         {
             position: "B.Tech CSE",
             company: "SRMIST",
-            period: "2024 - Present",
+            period: "2024 - 2028",
             location: "Chennai",
             description:
                 "Pursuing Bachelor of Technology in Computer Science and Engineering with a focus on strong technical foundations and hands-on learning.",
@@ -73,7 +75,7 @@ export const config = {
             image: "/images/project-1.webp",
             github: {
                 show: true,
-                url: "https://github.com/Pratyushsrivastavasgn"
+                url: "https://github.com/Pratyushsrivastavasgn/WorkOBalance1"
             },
             live: {
                 show: false,
@@ -90,11 +92,11 @@ export const config = {
             image: "/images/project-2.webp",
             github: {
                 show: true,
-                url: "https://github.com/Pratyushsrivastavasgn"
+                url: "https://github.com/Pratyushsrivastavasgn/vrlabeee"
             },
             live: {
                 show: true,
-                url: "#"
+                url: "https://srmvlabs.vercel.app"
             }
         },
         {
@@ -106,11 +108,11 @@ export const config = {
             image: "/images/project-3.webp",
             github: {
                 show: true,
-                url: "https://github.com/Pratyushsrivastavasgn"
+                url: "https://github.com/Pratyushsrivastavasgn/Quiz"
             },
             live: {
                 show: true,
-                url: "#"
+                url: "quiz-zeta-ten-59.vercel.app"
             }
         }
     ],

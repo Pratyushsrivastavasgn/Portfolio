@@ -2,7 +2,8 @@
     position: fixed;
     top: 30px;
     right: 30px;
-    z-index: 1000;
+    z-index: 9999; /* raise above overlays so clicks register */
+    pointer-events: auto; /* ensure container accepts pointer events */
 }
 
 .music-controls {
@@ -16,6 +17,21 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     align-items: center;
+}
+
+.minimal-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.music-player-container.minimal .music-controls {
+    padding: 6px 10px;
+    border-radius: 18px;
+}
+
+.music-btn {
+    pointer-events: auto; /* make sure buttons receive clicks */
 }
 
 .music-btn {
