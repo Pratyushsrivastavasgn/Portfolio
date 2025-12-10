@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { FaMusic, FaPause, FaForward, FaBackward, FaVolumeHigh, FaVolumeXmark } from "react-icons/fa6";
+import { FaMusic, FaPause, FaForward, FaBackward } from "react-icons/fa6";
 import "./styles/MusicPlayer.css";
 
 // Playlist - include available track(s) in `public/audio`
@@ -7,23 +7,16 @@ const playlist = [
     "/audio/music.mp3",
 ];
 
-const formatTime = (sec: number) => {
-    if (!isFinite(sec)) return "0:00";
-    const minutes = Math.floor(sec / 60);
-    const seconds = Math.floor(sec % 60).toString().padStart(2, "0");
-    return `${minutes}:${seconds}`;
-};
 
 const MusicPlayer = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [currentTrack, setCurrentTrack] = useState(0);
     const [duration, setDuration] = useState(0);
-    const [currentTime, setCurrentTime] = useState(0);
-    const [volume, setVolume] = useState(0.4);
+    // store volume in a ref (no visible volume UI)
+    const volumeRef = useRef(0.4);
     // start muted to increase chance autoplay is allowed by browser
     const [muted, setMuted] = useState(true);
     const [autoplayRequested, setAutoplayRequested] = useState(true);
-    const [autoplayAllowed, setAutoplayAllowed] = useState(false);
 
     const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -37,46 +30,32 @@ const MusicPlayer = () => {
         } else {
             // If audio is muted, unmute on user-initiated play (counts as interaction)
             if (audio.muted) {
-                try {
-                    audio.muted = false;
-                    setMuted(false);
-                } catch (e) {}
+                try { audio.muted = false; setMuted(false); } catch { }
             }
             audio.play().then(() => {
                 setIsPlaying(true);
-                try { localStorage.setItem("music:autoplay", "true"); } catch (e) {}
-            }).catch((e) => {
-                console.warn("Playback failed:", e);
+                try { localStorage.setItem("music:autoplay", "true"); } catch { }
+            }).catch((err) => {
+                console.warn("Playback failed:", err);
             });
         }
     }, [isPlaying]);
 
     // persist current track index
     useEffect(() => {
-        try { localStorage.setItem("music:track", String(currentTrack)); } catch (e) {}
+        try { localStorage.setItem("music:track", String(currentTrack)); } catch { }
     }, [currentTrack]);
 
     const playTrack = useCallback((index: number) => {
-        setCurrentTrack((prev) => {
-            const next = (index + playlist.length) % playlist.length;
-            return next;
-        });
+        const next = (index + playlist.length) % playlist.length;
+        setCurrentTrack(next);
         setIsPlaying(true);
     }, []);
 
     const playNext = () => playTrack(currentTrack + 1);
     const playPrev = () => playTrack(currentTrack - 1);
 
-    // Seek when clicking progress
-    const seek = (e: React.MouseEvent<HTMLDivElement>) => {
-        const audio = audioRef.current;
-        if (!audio) return;
-        const rect = (e.target as HTMLDivElement).getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const pct = Math.max(0, Math.min(1, x / rect.width));
-        audio.currentTime = pct * duration;
-        setCurrentTime(audio.currentTime);
-    };
+    // no seek UI in minimal player
 
     useEffect(() => {
         const audio = audioRef.current;
@@ -87,10 +66,7 @@ const MusicPlayer = () => {
             // restore saved time if available
             const savedTime = parseFloat(localStorage.getItem("music:time") || "0");
             if (!isNaN(savedTime) && savedTime > 0 && savedTime < audio.duration) {
-                try {
-                    audio.currentTime = savedTime;
-                    setCurrentTime(savedTime);
-                } catch (e) {}
+                try { audio.currentTime = savedTime; } catch { }
             }
 
             // If we requested autoplay earlier, try to play now that metadata is loaded
@@ -101,22 +77,16 @@ const MusicPlayer = () => {
                     localStorage.setItem("music:autoplay", "true");
                     // try to unmute after a short delay
                     setTimeout(() => {
-                        try {
-                            audio.muted = false;
-                            setMuted(false);
-                        } catch (e) {}
+                        try { audio.muted = false; setMuted(false); } catch { }
                     }, 600);
-                }).catch((e) => {
-                    console.warn("Autoplay after load failed:", e);
+                }).catch((err) => {
+                    console.warn("Autoplay after load failed:", err);
                 });
             }
         };
         const onTime = () => {
             const t = audio.currentTime || 0;
-            setCurrentTime(t);
-            try {
-                localStorage.setItem("music:time", String(t));
-            } catch (e) {}
+            try { localStorage.setItem("music:time", String(t)); } catch { }
         };
         const onEnded = () => playNext();
         const onError = (ev: any) => {
@@ -144,7 +114,7 @@ const MusicPlayer = () => {
         // change source and load
         audio.src = playlist[currentTrack];
         audio.load();
-        audio.volume = volume;
+        audio.volume = volumeRef.current;
         audio.muted = muted;
         if (isPlaying) {
             audio.play().catch((e) => console.warn("Playback failed:", e));
@@ -155,8 +125,8 @@ const MusicPlayer = () => {
     useEffect(() => {
         const audio = audioRef.current;
         if (!audio) return;
-        audio.volume = volume;
-    }, [volume]);
+        audio.volume = volumeRef.current;
+    }, []);
 
     useEffect(() => {
         const audio = audioRef.current;
@@ -164,15 +134,13 @@ const MusicPlayer = () => {
         audio.muted = muted;
     }, [muted]);
 
-    const toggleMute = () => setMuted((m) => !m);
-
-    const trackName = playlist[currentTrack]?.split("/").pop() || "Unknown";
+    
 
     // Attempt autoplay on mount. We start muted (commonly allowed) and try to unmute shortly after.
     // Restore previous user autoplay preference and playback position if present.
     useEffect(() => {
         const allowed = localStorage.getItem("music:autoplay") === "true";
-        setAutoplayAllowed(allowed);
+        // don't track a separate autoplayAllowed state here
         if (allowed) {
             // user previously allowed autoplay -> try unmuted
             setMuted(false);
@@ -190,7 +158,7 @@ const MusicPlayer = () => {
         const audio = audioRef.current;
         if (!audio) return;
         audio.muted = allowed ? false : true;
-        audio.volume = volume;
+        audio.volume = volumeRef.current;
         audio.play().then(() => {
             setIsPlaying(true);
             if (allowed) {
@@ -199,15 +167,11 @@ const MusicPlayer = () => {
             // if we started muted, try to unmute after short delay
             if (!allowed) {
                 setTimeout(() => {
-                    try {
-                        audio.muted = false;
-                        setMuted(false);
-                    } catch (e) {}
+                    try { audio.muted = false; setMuted(false); } catch { }
                 }, 600);
             }
-        }).catch((e) => {
+        }).catch(() => {
             // autoplay blocked — will retry after metadata loads
-            // console.warn("Autoplay attempt failed:", e);
         });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
