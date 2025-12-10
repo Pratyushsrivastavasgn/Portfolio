@@ -34,6 +34,22 @@
     pointer-events: auto; /* make sure buttons receive clicks */
 }
 
+.unmute-hint {
+    margin-top: 8px;
+    display: inline-block;
+    background: rgba(138,43,226,0.95);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 14px;
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 6px 18px rgba(138,43,226,0.18);
+    transition: transform 120ms ease, opacity 200ms ease;
+}
+.unmute-hint:hover { transform: translateY(-2px); }
+.unmute-hint:active { transform: translateY(0); }
+
 .music-btn {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.05);

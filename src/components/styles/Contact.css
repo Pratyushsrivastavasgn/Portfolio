@@ -17,9 +17,18 @@
   margin: 0;
   margin-bottom: 40px;
 }
-.contact-flex {
+.social-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
+}
+.contact-flex {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 20px;
 }
 .contact-flex h4 {
   font-weight: 500;
@@ -54,6 +63,48 @@ a.contact-social {
   gap: 10px;
   opacity: 0.5;
 }
+.contact-box:last-child {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  grid-column: 3;
+  grid-row: 1;
+}
+/* Contact form styles (glassy look) */
+.contact-form-box {
+  min-width: 320px;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+}
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: #fff;
+  outline: none;
+  backdrop-filter: blur(8px);
+}
+.contact-form textarea { resize: vertical; }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.5); }
+.form-actions { display:flex; align-items:center; gap:12px; margin-top:4px; }
+.btn-primary {
+  background: linear-gradient(90deg, rgba(138,43,226,0.9), rgba(255,0,150,0.85));
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+.btn-primary:disabled { opacity: 0.6; cursor: default; }
+.form-success { color: #8ef; font-size: 13px; }
+.form-error { color: #f88; font-size: 13px; }
+.form-note { font-size: 12px; opacity: 0.6; margin-top:8px; }
 @media only screen and (max-width: 1600px) {
   .contact-section h3 {
     font-size: 50px;
@@ -96,5 +147,35 @@ a.contact-social {
   }
   .contact-container {
     width: calc(100% - 25px);
+  }
+  .social-top-right {
+    position: static;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .contact-box:last-child {
+    position: static;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .contact-section h3 {
+    font-size: 30px;
+  }
+  .contact-box h2 {
+    font-size: 16px;
+  }
+  a.contact-social {
+    font-size: 18px;
+  }
+  .social-top-right {
+    gap: 10px;
+  }
+  .contact-form-box {
+    min-width: auto;
   }
 }

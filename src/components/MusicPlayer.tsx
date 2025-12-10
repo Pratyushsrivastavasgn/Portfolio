@@ -17,8 +17,25 @@ const MusicPlayer = () => {
     // start muted to increase chance autoplay is allowed by browser
     const [muted, setMuted] = useState(true);
     const [autoplayRequested, setAutoplayRequested] = useState(true);
+    const [showUnmuteHint, setShowUnmuteHint] = useState(false);
 
     const audioRef = useRef<HTMLAudioElement>(null);
+
+    const handleEnableSound = useCallback(() => {
+        const audio = audioRef.current;
+        if (!audio) return;
+        try {
+            audio.muted = false;
+            setMuted(false);
+            audio.play().then(() => {
+                setIsPlaying(true);
+                setShowUnmuteHint(false);
+                try { localStorage.setItem("music:autoplay", "true"); } catch { }
+            }).catch(() => {
+                setShowUnmuteHint(true);
+            });
+        } catch { }
+    }, []);
 
     // Play / pause
     const togglePlay = useCallback(() => {
@@ -34,9 +51,11 @@ const MusicPlayer = () => {
             }
             audio.play().then(() => {
                 setIsPlaying(true);
+                setShowUnmuteHint(false);
                 try { localStorage.setItem("music:autoplay", "true"); } catch { }
             }).catch((err) => {
                 console.warn("Playback failed:", err);
+                setShowUnmuteHint(true);
             });
         }
     }, [isPlaying]);
@@ -74,13 +93,14 @@ const MusicPlayer = () => {
                 audio.play().then(() => {
                     setIsPlaying(true);
                     setAutoplayRequested(false);
-                    localStorage.setItem("music:autoplay", "true");
-                    // try to unmute after a short delay
+                    setShowUnmuteHint(false);
+                    try { localStorage.setItem("music:autoplay", "true"); } catch { }
                     setTimeout(() => {
                         try { audio.muted = false; setMuted(false); } catch { }
                     }, 600);
                 }).catch((err) => {
                     console.warn("Autoplay after load failed:", err);
+                    setShowUnmuteHint(true);
                 });
             }
         };
@@ -194,6 +214,11 @@ const MusicPlayer = () => {
                     <FaForward />
                 </button>
             </div>
+            {showUnmuteHint && (
+                <button className="unmute-hint" onClick={handleEnableSound} aria-label="Enable sound">
+                    Tap to enable sound
+                </button>
+            )}
         </div>
     );
 };
