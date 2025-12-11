@@ -10,7 +10,7 @@
 
 .work-section {
   transition: 0s;
-  height: 100vh;
+  height: 90vh;
   box-sizing: border-box;
   will-change: transform;
 }
@@ -42,10 +42,6 @@
   flex-shrink: 0;
   gap: 50px;
   justify-content: start;
-}
-
-.work-flex .work-box:nth-child(even) {
-  flex-direction: column-reverse;
 }
 
 .work-flex::before,

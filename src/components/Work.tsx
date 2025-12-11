@@ -1,5 +1,4 @@
 import "./styles/Work.css";
-import WorkImage from "./WorkImage";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect } from "react";
@@ -92,7 +91,6 @@ const Work = () => {
                   )}
                 </div>
               </div>
-              <WorkImage image={project.image} alt={project.title} />
             </div>
           ))}
         </div>

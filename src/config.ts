@@ -72,7 +72,7 @@ export const config = {
             description: "An AI-powered application designed to help users maintain a healthy work-life balance through intelligent monitoring and suggestions.",
             technologies:
                 "Python, TensorFlow, Tkinter, MongoDB, MediaPipe, OpenCV",
-            image: "/images/project-1.webp",
+            image: "/images/project-1.jpg",
             github: {
                 show: true,
                 url: "https://github.com/Pratyushsrivastavasgn/WorkOBalance1"
@@ -89,7 +89,7 @@ export const config = {
             description: "A comprehensive virtual laboratory platform enabling students to perform experiments and simulations online with real-time feedback.",
             technologies:
                 "TypeScript, Reactflow, ReactForms, Canvas API, TailwindCSS",
-            image: "/images/project-2.webp",
+            image: "/images/project-2.jpg",
             github: {
                 show: true,
                 url: "https://github.com/Pratyushsrivastavasgn/vrlabeee"
@@ -105,13 +105,45 @@ export const config = {
             category: "Frontend",
             description: "An interactive quiz application featuring a modern UI, real-time scoring, and dynamic question generation for an engaging user experience.",
             technologies: "React, TypeScript, TailwindCSS",
-            image: "/images/project-3.webp",
+            image: "/images/project-3.jpg",
             github: {
                 show: true,
                 url: "https://github.com/Pratyushsrivastavasgn/Quiz"
             },
             live: {
                 show: true,
+                url: "quiz-zeta-ten-59.vercel.app"
+            }
+        },
+        {
+            id: 4,
+            title: "Spendly",
+            category: "MERN Stack",
+            description: "A personal finance management app that helps users track expenses, set budgets, and visualize spending patterns through intuitive charts and reports.",
+            technologies: "React, TypeScript, TailwindCSS, MongoDB, Express, Node.js",
+            image: "/images/project-4.jpg",
+            github: {
+                show: true,
+                url: "https://github.com/Pratyushsrivastavasgn/Spendly"
+            },
+            live: {
+                show: false,
+                url: "quiz-zeta-ten-59.vercel.app"
+            }
+        },
+        {
+            id: 5,
+            title: "Food-Hub",
+            category: "MERN Stack",
+            description: "An online food platform that connects users with local restaurants, offering a seamless browsing, ordering, and delivery experience.",
+            technologies: "React, TypeScript, TailwindCSS, MongoDB, Express, Node.js",
+            image: "/images/project-3.webp",
+            github: {
+                show: true,
+                url: "https://github.com/Pratyushsrivastavasgn/Food-Hub"
+            },
+            live: {
+                show: false,
                 url: "quiz-zeta-ten-59.vercel.app"
             }
         }
