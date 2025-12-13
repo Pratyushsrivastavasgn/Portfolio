@@ -13,14 +13,13 @@ export const config = {
         location: "India"
     },
 
-    about: {
-        title: "About Me",
-        description: [
-  "I’m a second-year CSE student passionate about software development, AI/ML, and cloud technologies.",
-  "I’m building a strong foundation in Java, JavaScript, DSA, and full-stack engineering through hands-on projects.",
-  "I learn by creating whether it’s web apps, mobile apps, or intelligent automation tools.",
-  "Curious and growth-driven, I focus on solving real-world problems through technology."
-]
+   about: {
+  title: "About Me",
+  description: [
+    "Second-year CSE student passionate about software development, AI/ML, and cloud technologies.",
+    "Building a strong foundation in Java, JavaScript, DSA, and full-stack engineering through hands-on projects.",
+    "A builder at heart, focused on solving real-world problems with technology."
+  ]
 
     },
 
